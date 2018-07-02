@@ -1,0 +1,12 @@
+# OSX generated files #
+.DS_Store
+.DS_Store?
+
+# Temporary files #
+*~
+
+# Python temp #
+__pycache__
+*.pyc
+*.ipynb_checkpoints
+*.Rhistory
