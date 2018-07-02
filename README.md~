@@ -21,9 +21,6 @@ the UvA in June 2018. It is a project for the UvA ICT group about chatbots.
 
 And open webrowser at [0.0.0.0:5000](http://0.0.0.0:5000)
 
-For security and copyright reasons, in the public repostitory the file 
-chatbot_interface.py is removed.
-
 ## Configure
 To change the chatbots behaviour different parameters in the config.py file in 
 */chatbot* can be changed.
