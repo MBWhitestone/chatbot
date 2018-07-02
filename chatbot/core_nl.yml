@@ -1,0 +1,89 @@
+u_greetings:
+    - "Hallo"
+    - "Hoi"
+    - "Dag"
+    - "Goedemorgen"
+    - "Goedemiddag"
+    - "Goedenavond"
+u_confirmation:
+    - "Ja"
+    - "Klopt"
+    - "Inderdaad"
+    - "Zeker"
+    - "Jup"
+    - "Jawohl"
+    - "Yes"
+    - "Da"
+    - "Mja"
+    - "Ok"
+    - "Yass"
+    - "Jawel"
+u_negation:
+    - "Nee"
+    - "Nope"
+    - "Nada"
+    - "Incorrect"
+    - "Niet"
+    - "Muh"
+g_confirmation:
+    - "Is dit waar je naar op zoek was?"
+    - "Helpt dit bij je zoektocht?"
+g_confirmation_addition:
+    - "Gaat je vraag over {ca}?"
+    - "Ben je op zoek naar iets wat te maken heeft met {ca}?"
+    - "Wil je iets weten over {ca}?"
+g_confirmation_question:
+    - "Bedoel je: '{faq}'"
+g_level:
+    - "Welke {level} gaat je vraag over?"
+    - "Over welke {level} praten we dan?"
+g_greeting:
+    - "Hoi! Gerrit hier, wat wil je weten?"
+    - "Welkom, stel je vraag!"
+    - "Ik heb op je zitten wachten, vertel me wat je nodig hebt!"
+g_closing: 
+    - "Tot ziens!"
+    - "Later!"
+    - "Dag hoor"
+g_server:
+    - "Eens even kijken..."
+    - "Ik ga even wat opzoeken voor je"
+g_answer:
+    - "Ik denk dat dit een antwoord kan zijn op je vraag:"
+    - "Dit lijkt overeen te komen met je zoekopdracht:"
+g_link:
+    - "Ik vond deze informatie op de pagina over {subject} met deze {link} gevonden."
+    - "En ik heb ook een {link} voor je naar de pagina over {subject} waar ik dit heb gevonden."
+g_finish:
+    - "Wat fijn dat ik je kon helpen! Wilde je nog iets anders vragen?"
+    - "Super! Anders nog iets?"
+    - "Blij om van dienst te zijn. Zit je nog ergens anders mee?"
+g_repeat:
+    - "Ik snap niet wat je daarmee bedoelt. Kun je dat anders opschrijven?"
+    - "Ik begrijp dat niet helemaal. Probeer het misschien anders te spellen."
+    - "Ik herken je antwoord niet. Probeer nog eens antwoord te geven op de vraag."
+g_keyword:
+    - "Denk aan je vraag. Wat is een woord dat je te binnen schiet?"
+    - "Noem een woord dat belangrijk is in relatie tot waar je naar op zoek bent."
+g_wrong_keyword:
+    - "1 woord invullen alsjeblieft."
+    - "Ik detecteer een spatie. Weet je zeker dat je 1 woord hebt ingevuld?"
+    - "Let op: je moet 1 woord invullen zonder spaties."
+g_rephrase:
+    - "Ik vind jouw vraag erg moeilijk. Stel hem alsjeblieft nog eens, maar dan op een andere manier."
+    - "Probeer je vraag eens te herformuleren. Misschien dat ik het dan beter begrijp!"
+g_new_question:
+    - "Vraag maar raak."
+    - "Wat wordt het deze keer?"
+    - "Nog een vraag? Spannend! Ik ben een en al oor."
+    - "Ik hoor graag je volgende vraag."
+g_fool:
+    - "Probeer je me voor de gek te houden?"
+    - "Dat soort rare tekens vind ik niet zo fijn, die zijn een veiligheidsrisico."
+    - "Daar trap ik niet in!"
+g_language:
+    - "Geen mooiere taal dan het Nederlands toch?"
+    - "Jep, Gerrit kan ook Nederlands"
+g_server_down:
+    - "Sorry, ik kan geen verbinding meer maken met de server"
+    - "Oeps, er is iets fout gegaan toen ik naar je vraag zocht :("

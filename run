@@ -1,0 +1,2 @@
+cd chatbot
+python3 run.py

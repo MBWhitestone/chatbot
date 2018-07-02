@@ -1,0 +1,284 @@
+<!--
+# File: bot.html
+# The chatbot html
+# Copyright 2018
+# The Gerrit Group
+#
+# Based on:
+# https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerrit</title>
+    <link rel="shortcut icon" type="image/png" href="/interface/favicon.png"/>
+    <meta charset="UTF-8"/>
+    <meta name="application-name" content="Gerrit"/>
+    <meta name="description" content="UvA Search Chatbot Gerrit"/>
+    <meta name="subject" content="Search UvA"/>
+    <meta name="keywords" content="UvA, University of Amsterdam, Universiteit van Amsterdam, Gerrit, Chatbot, Vragen, Search"/>
+    <meta name="author" content="The Gerrit Group"/>
+    <meta name="rating" content="General"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="msapplication-TileImage" content="/interface/favicon.png"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+</head>
+<style>
+    .header img {
+        width: 30px;
+        margin-top: 25px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        opacity: 0.5
+    }
+    #enflag {
+        opacity: 1;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    #logo, #smallogo, #enflag, #nlflag {
+        cursor: pointer;
+    }
+
+    .header h1 {
+        margin-left: 10px;
+        float: left;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 0.9;
+    }
+    .header h1:hover {
+        opacity: 1;
+    }
+    header {
+        /* background: linear-gradient(to right, rgba(0, 128, 128, 0.7), rgba(0, 128, 128, 0.7), black, black, black); */
+        /* background: linear-gradient(to right, rgba(0, 128, 128, 0.7), black, #bc0031,#bc0031, black, black); */
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.7), black);
+
+        width: 100%;
+        /* border-bottom: 3px solid black; */
+        /* border: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%; */
+        margin-bottom: 10px;
+    }
+
+    .line {
+        /* background: linear-gradient(to right, #bc0031, #bc0031, rgba(0, 0, 0, 0.7), #bc0031, #bc0031); */
+        background: #bc0031;
+        height: 3px;
+    }
+
+    body {
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .message_holder {
+        max-height: 80vh;
+        margin-left: 10px;
+        margin-right: 10px;
+        overflow: auto;
+    }
+    form {
+        margin-left: 10px;
+    }
+    #submit {
+        background-color: white;
+        border: 0px solid #bc0031;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 3px;
+        color: black;
+        border-radius: 4px;
+    }
+    #submit:hover {
+        background-color: #bc0031;
+        color: white;
+        cursor: pointer;
+    }
+    .message {
+        border: 0px;
+        color: #bc0031;
+    }
+    #logo {
+        float: right;
+        width: 250px;
+        height: 26px;
+        margin-right: 20px;
+        opacity: 1.0;
+        display: block;
+        cursor: pointer;
+    }
+    #smalllogo {
+        display: none;
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #logo {
+            display: none;
+        }
+        #smalllogo {
+            opacity: 1.0;
+            width: 50px;
+            float: right;
+            display: block;
+            margin-right: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        #smalllogo, #logo {
+            display: none;
+        }
+    }
+
+</style>
+<body>
+    <header class="header">
+        <h1>Chatbot Gerrit</h1>
+        <img id="nlflag"    src="/interface/flag_nl.png"/>
+        <img id="enflag"    src="/interface/flag_en.png"/>
+        <img id="smalllogo" src="/interface/uva_logo.jpeg"/>
+        <img id="logo"      src="/interface/uvalogo_en.jpg"/>
+        <div class="line"></div>
+    </header>
+    <!--  Placeholder for messages-->
+    <div class="message_holder"></div>
+
+    <!--  Form to add a message -->
+    <form action="/" method="POST">
+      <input name="message" type="text" class="message" placeholder="type here..." />
+      <input id="submit" type="submit" value="Ask"/>
+    </form>
+
+    <!-- jQuery and socket.io -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+    <!--  connection with backend -->
+    <script type="text/javascript" charset="UTF-8">
+        // Init socket
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('connect', function() {
+            socket.emit('start')
+        })
+        function stripHTML(dirtyString) {
+          var container = document.createElement('div');
+          var text = document.createTextNode(dirtyString);
+          container.appendChild(text);
+          return container.innerHTML; // innerHTML will be a xss safe string
+        }
+        // Send form info
+        var form = $('form').on('submit', function(e) {
+          e.preventDefault()
+          var m = $('input.message').val();
+          console.log(m)
+          var l = stripHTML(m)
+          console.log(l)
+          if (l.length > 0) {
+              $('#submit').prop("disabled", true );
+              if (m.length != l.length) {
+                  socket.emit('hackerman')
+              }
+          socket.emit('query', {message: l})
+          }
+          $('input.message').val('').focus()
+        } )
+        // Recieve server info
+        socket.on('my_response', function(msg) {
+          $('div.message_holder').append('<div style="padding: 2px;"><b style="color: #000;">You:   </b>'
+                                         +msg+'</div>');
+          var d = $('div.message_holder');
+          d.scrollTop(d.prop("scrollHeight"));
+        })
+        socket.on('response_gerrit', function(msg) {
+         $('div.message_holder').append('<div style="padding: 2px;"><b style="color: #bc0031;">Gerrit: </b>'
+                                        +msg+'</div>');
+         var d = $('div.message_holder');
+         d.scrollTop(d.prop("scrollHeight"));
+         $('#submit').prop("disabled", false );
+        })
+
+        // Language selection //
+        var lang = 1;
+
+        // Hover functions
+        $('#enflag').hover(
+            function() {
+                if (lang != 1) {
+                    $('#nlflag').css('opacity', '0.5');
+                    $('#enflag').css('opacity', '1.0');
+                }
+            }, function() {
+                if (lang != 1) {
+                    $('#nlflag').css('opacity', '1.0');
+                    $('#enflag').css('opacity', '0.5');
+                }
+            }
+        );
+        $('#nlflag').hover(
+            function() {
+                if (lang != 0) {
+                    $('#nlflag').css('opacity', '1.0');
+                    $('#enflag').css('opacity', '0.5');
+                }
+            }, function() {
+                if (lang != 0) {
+                    $('#nlflag').css('opacity', '0.5');
+                    $('#enflag').css('opacity', '1.0');
+                }
+            }
+        );
+
+        // Change Language
+        $('#nlflag').click(function() {
+            socket.emit('language', 0);
+        });
+        $('#enflag').click(function() {
+            socket.emit('language', 1);
+        });
+
+        socket.on('change_language_self', function(l) {
+            lang = l;
+            // Dutch
+            if (l == 0) {
+                $('#nlflag').css('opacity', '1.0');
+                $('#enflag').css('opacity', '0.5');
+                $('#submit').val('Verzenden');
+                $('#logo').attr("src", "/interface/uvalogo_nl.jpg");
+            // English
+            } else {
+                $('#nlflag').css('opacity', '0.5');
+                $('#enflag').css('opacity', '1.0');
+                $('#submit').val('Ask');
+                $('#logo').attr("src", "/interface/uvalogo_en.jpg");
+            }
+        });
+
+        // Logo link
+        $('#logo').click(function () {
+            redir();
+        });
+
+        $('#smalllogo').click(function () {
+            redir();
+        });
+
+        function redir () {
+            if (lang == 1) {
+                // English
+                window.location.href = "http://www.uva.nl/en/home";
+            } else {
+                // Dutch
+                window.location.href = "http://www.uva.nl/home";
+            }
+        }
+
+        $('input.message').val('').focus()
+
+
+    </script>
+</body>
+</html>

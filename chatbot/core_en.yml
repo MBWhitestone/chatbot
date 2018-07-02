@@ -1,0 +1,103 @@
+u_greetings:
+    - "Hi"
+    - "Hello"
+    - "Hi there"
+u_confirmation:
+    - "Yes"
+    - "Correct"
+    - "Indeed"
+    - "Sure"
+    - "Yep"
+    - "Jawohl"
+    - "Jup"
+    - "Thats ok"
+    - "Right"
+    - "Ja"
+    - "Ok"
+    - "Yass"
+    - "Yeah"
+    - "Totally"
+u_negation:
+    - "Nee"
+    - "Nope"
+    - "Nada"
+    - "Niet"
+    - "Muh"
+    - "No"
+    - "Not"
+    - "Incorrect"
+    - "Not what I meant"
+    - "Meh"
+g_confirmation:
+    - "Is this what you were looking for?"
+    - "Does that help you?"
+g_confirmation_addition:
+    - "Is your question about {ca}?"
+    - "Are you searching for something about {ca}?"
+g_confirmation_question:
+    - "Do you mean: '{faq}'"
+g_level:
+    - "So, which {level} are we talking about then?"
+    - "Which {level} is your question about?"
+g_greeting:
+    - "Hi there, I am Gerrit. How can I help you today?"
+    - "Welcome, you can ask me anything right away!"
+    - "Let's get right to business: what can I help you with?"
+    - "Nice to meet you! I'm Gerrit, the UvA's chatbot. What are you looking for on the website?"
+    - "Greetings! My name is Gerrit, and today I will be helping you find what you're looking on the website. Please describe what you're looking for."
+    - "Pleasure meeting you, I'm Gerrit. Couldn't find something on the UvA website? I'll help you find it!"
+g_closing: 
+    - "Nice to have met you!"
+    - "See you again soon!"
+    - "Goodbye"
+g_server:
+    - "Let's have a look..."
+    - "Give me a sec..."
+g_answer:
+    - "I found the following information for you:"
+    - "This seems to help you out here:"
+    - "Maybe this is what you're looking for:"
+    - "Perhaps this answers your question:"
+g_link:
+    - "And here's a {link} to the page where I found information on {subject}."
+    - "You can go to the page about {subject} where I found this yourself via this {link}."
+    - "If you want to visit the page about {subject}
+       with this info yourself, here's a {link}."
+g_finish:
+    - "Great! Do you have another question for me?"
+    - "I'm the best :) was there something else you'd like to know?"
+    - "Glad I could help you. Is there anything else you wanted to ask?"
+g_repeat:
+    - "I don't quite understand. Try writing that differently."
+    - "I don't know what you mean by that. Please try again."
+    - "I couldn't find a match for that. Could you write that differently?"
+g_keyword:
+    - "Name one word that is important in relation to what you're looking for."
+    - "Think about your question. What is a word that comes to mind?"
+    - "Try typing one word that is really important to your search."
+g_wrong_keyword:
+    - "Please fill in a single word."
+    - "Please fill in a word without spaces."
+    - "I detect spaces in your word. Are you sure you filled in one word?"
+g_rephrase:
+    - "Please ask your question again. Try to use different words this time."
+    - "Hmm, I don't think I fully understand your question. Please try rephrasing it."
+    - "Well, I'm beat. Try asking your question again in a different way."
+g_new_question:
+    - "Ask away!"
+    - "What will it be this time around?"
+    - "Go ahead and ask your question!"
+    - "Another question? Exciting, let's hear it!"
+    - "Please ask your new question."
+    - "Let's hear it then!"
+    - "I'm all ears."
+g_fool:
+    - "Do not try to fool me with such characters, please."
+    - "Did you think I wouldn't notice such characters?"
+    - "Ah, caught your sneaky input there."
+g_language:
+    - "I will talk English to you from now on"
+    - "Yes, I can speak English to you"
+g_server_down:
+    - "Sorry, my connection is down for a while, please try again later"
+    - "Oh no, something went wrong in searching your query :("
